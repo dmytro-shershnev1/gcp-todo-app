@@ -1,6 +1,9 @@
 steps:
+  - name: 'export'
+    args: 'DOCKER_BUILDKIT='
+
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['export', 'DOCKER_BUILDKIT=1', 'build', '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/todo-app-docker-repo/todo-app-image:$SHORT_SHA', '.' ]
+    args: ['build', '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/todo-app-docker-repo/todo-app-image:$SHORT_SHA', '.' ]
     id: 'Build Docker Image'
 
     # Images
