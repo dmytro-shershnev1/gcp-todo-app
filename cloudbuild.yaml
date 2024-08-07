@@ -1,13 +1,13 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/todo-app-docker-repo/todo-app-image:$CI_COMMIT_SHORT_SHA', '.' ]
+    args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/todo-app-docker-repo/todo-app-image:${SHORT_SHA}', '.' ]
     id: 'Build Docker Image'
 
     # Images
     # - europe-west1-docker.pkg.dev/todo-app-project-431519/todo-app-docker-repo/todo-app-image
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/todo-app-docker-repo/todo-app-image:$CI_COMMIT_SHORT_SHA']
+    args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/todo-app-docker-repo/todo-app-image:${SHORT_SHA}']
     id: 'Push Docker Image'
 
 #  - name: 'google/cloud-sdk:latest'
